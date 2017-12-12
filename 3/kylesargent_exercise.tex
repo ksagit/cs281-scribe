@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage[left=1in,top=1in,right=1in]{geometry}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\newcommand{\foral}{\forall \;}
+\newcommand{\exist}{\exists \;}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tfor}{\text{ for }}
+\newcommand{\tif}{\text{ if }}
+\newcommand{\prop}{\underline{Proposition} }
+\newcommand{\dfn}{\underline{Definition} } 
+\newcommand{\rmk}{\underline{Remark} }
+\newcommand{\exmp}{\underline{Example} }
+\newcommand{\rcl}{\underline{Recall} }
+\newcommand{\fct}{\underline{Fact} }
+\newcommand{\cor}{\underline{Corollary} }
+\newcommand{\thm}{\underline{Theorem} }
+\newcommand{\lma}{\underline{Lemma} }
+\newcommand{\prb}{\underline{Problem} }
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\def\code#1{\texttt{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{CS281 Exercise}
+\rhead{Kyle Sargent}
+\rfoot{Page \thepage}
+
+\begin{document}
+In homework 2, we show that
+\[ x \sim \mathcal{N}(0_D, \mathbb{I}_D) \implies \|x\|_2^2 \sim \chi_D^2 \]
+Therefore let $x \sim \mathcal{N}(0_D, \mathbb{I}_D)$. Let $A$ be a matrix. Prove that
+\[ \mathbb{E} \|Ax\|_2^2 = \|A\|_F^2 \]
+And check that the generalization holds for the case $A = \mathbb{I}_D$. \\
+
+Solution: We have
+\begin{align*}
+\mathbb{E}\|Ax \|_2^2 &= \mathbb{E}(tr(x^T A^T A x))
+\end{align*}
+By invariance of trace under cyclic permutations, we obtain
+\[ \mathbb{E}\|Ax \|_2^2 = \mathbb{E}(tr(xx^T A^T A)) \]
+By linearity of trace as an operator, it commutes with expectation, so we get
+\[ tr(\mathbb{E}(xx^T A^T A)) \]
+By linearity of expectation, we obtain
+\[ tr(\mathbb{E}(xx^T) A^T A) \]
+From the covariance matrix of $x$ being $\mathbb{I}_D$, we get
+\[ tr(A^T A) \]
+Which is another definition for the squared Frobenius norm, i.e.
+\[ \|A\|_F^2 = \sum\limits_{i}\sum\limits_{j} |A_{ij}|^2 \]
+In the case $A = \mathbb{I}_D$. we can apply homework 2 and get
+\[ \mathbb{E}(\|\mathbb{I}_Dx\|_2^2) = \mathbb{E}(\|x\|_2^2) = \mathbb{E}(\chi_D^2) = D = \|\mathbb{I}_D\|_F^2 \]
+
+
+
+\end{document}
